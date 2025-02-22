@@ -1,12 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @next/next/no-img-element */
 'use client'
-import Image from 'next/image'
 import { useState, useCallback, useEffect } from 'react'
 import {  MapPin, Upload, CheckCircle, Loader } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { StandaloneSearchBox,  useJsApiLoader } from '@react-google-maps/api'
 import { Libraries } from '@react-google-maps/api';
-import { createUser, getUserByEmail, createReport, getRecentReports } from '@/utils/db/actions';
+import  {createUser, createReport, getUserByEmail, getRecentReports } from '../../utils/db/actions';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast'
 
@@ -127,7 +129,7 @@ export default function ReportPage() {
         }`;
 
       const result = await model.generateContent([prompt, ...imageParts]);
-      const response = await result.response;
+      const response = result.response;
       const text = response.text();
       
       try {
@@ -145,7 +147,7 @@ export default function ReportPage() {
           setVerificationStatus('failure');
         }
       } catch (error) {
-        console.log('Failed to parse JSON response:', text, error);
+        console.error('Failed to parse JSON response:', text);
         setVerificationStatus('failure');
       }
     } catch (error) {
@@ -170,13 +172,7 @@ export default function ReportPage() {
         newReport.amount,
         preview || undefined,
         verificationResult ? JSON.stringify(verificationResult) : undefined
-      ) as {
-        id: number;
-        location: string;
-        wasteType: string;
-        amount: string;
-        createdAt: Date;
-      };
+      ) as any;
       
       const formattedReport = {
         id: report.id,
@@ -255,7 +251,7 @@ export default function ReportPage() {
         
         {preview && (
           <div className="mt-4 mb-8">
-            <Image src={preview} alt="Waste preview" className="max-w-full h-auto rounded-xl shadow-md" />
+            <img src={preview} alt="Waste preview" className="max-w-full h-auto rounded-xl shadow-md" />
           </div>
         )}
         
