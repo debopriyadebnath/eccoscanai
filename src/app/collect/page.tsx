@@ -204,170 +204,193 @@ export default function CollectPage() {
   )
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-semibold mb-6 text-gray-800">Waste Collection Tasks</h1>
+    <div className="min-h-screen w-full bg-black text-red-500 p-8">
+      <h1 className="text-4xl font-bold mb-8 text-red-500 font-['Courier_New'] text-center">[WASTE COLLECTION SYSTEM]</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        <div className="border-2 border-red-500 p-4">
+          <h3 className="text-xl font-bold text-red-500 font-['Courier_New'] mb-2">[USER: Priya Sharma]</h3>
+          <p className="text-red-400 font-mono">Location: Salt Lake, Kolkata</p>
+          <p className="text-red-400 font-mono">Waste Type: Plastic Bottles</p>
+          <p className="text-red-400 font-mono">Weight: 5.2 kg</p>
+          <p className="text-red-400 font-mono">Reusability: High (Recyclable)</p>
+        </div>
+        <div className="border-2 border-red-500 p-4">
+          <h3 className="text-xl font-bold text-red-500 font-['Courier_New'] mb-2">[USER: Amit Roy]</h3>
+          <p className="text-red-400 font-mono">Location: Park Street, Kolkata</p>
+          <p className="text-red-400 font-mono">Waste Type: E-waste</p>
+          <p className="text-red-400 font-mono">Weight: 3.7 kg</p>
+          <p className="text-red-400 font-mono">Reusability: Medium (Parts Salvageable)</p>
+        </div>
+        <div className="border-2 border-red-500 p-4">
+          <h3 className="text-xl font-bold text-red-500 font-['Courier_New'] mb-2">[USER: Riya Das]</h3>
+          <p className="text-red-400 font-mono">Location: New Town, Kolkata</p>
+          <p className="text-red-400 font-mono">Waste Type: Paper Waste</p>
+          <p className="text-red-400 font-mono">Weight: 8.1 kg</p>
+          <p className="text-red-400 font-mono">Reusability: High (Recyclable)</p>
+        </div>
+      </div>
       
-      <div className="mb-4 flex items-center">
+      <div className="mb-6 flex items-center justify-center gap-4">
         <Input
           type="text"
-          placeholder="Search by area..."
+          placeholder="SEARCH LOCATION..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="mr-2"
+          className="max-w-md bg-black border-2 border-red-500 text-red-500 placeholder-red-700 font-mono"
         />
-        <Button variant="outline" size="icon">
-          <Search className="h-4 w-4" />
+        <Button variant="outline" size="icon" className="border-2 border-red-500 text-red-500 hover:bg-red-900/30">
+          <Search className="h-5 w-5" />
         </Button>
       </div>
 
+     
+
       {loading ? (
-        <div className="flex justify-center items-center h-64">
-          <Loader className="animate-spin h-8 w-8 text-gray-500" />
+        <div className="flex justify-center items-center h-96">
+          <Loader className="animate-spin h-12 w-12 text-red-500" />
+          <span className="ml-4 text-red-500 font-mono text-xl">LOADING DATA...</span>
         </div>
       ) : (
         <>
-          <div className="space-y-4">
+          <div className="grid gap-6">
             {paginatedTasks.map(task => (
-              <div key={task.id} className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                <div className="flex justify-between items-center mb-2">
-                  <h2 className="text-lg font-medium text-gray-800 flex items-center">
-                    <MapPin className="w-5 h-5 mr-2 text-gray-500" />
-                    {task.location}
+              <div key={task.id} className="bg-black p-6 border-2 border-red-500 hover:border-red-400 transition-colors">
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-xl font-bold text-red-500 flex items-center font-['Courier_New']">
+                    <MapPin className="w-6 h-6 mr-3" />
+                    &lt;{task.location}&gt;
                   </h2>
                   <StatusBadge status={task.status} />
                 </div>
-                <div className="grid grid-cols-3 gap-2 text-sm text-gray-600 mb-3">
-                  <div className="flex items-center relative">
-                    <Trash2 className="w-4 h-4 mr-2 text-gray-500" />
+                
+                <div className="grid grid-cols-3 gap-6 text-base text-red-400 mb-6 font-mono">
+                  <div className="flex items-center relative border border-red-500 p-3">
+                    <Trash2 className="w-5 h-5 mr-3" />
                     <span 
                       onMouseEnter={() => setHoveredWasteType(task.wasteType)}
                       onMouseLeave={() => setHoveredWasteType(null)}
                       className="cursor-pointer"
                     >
-                      {task.wasteType.length > 8 ? `${task.wasteType.slice(0, 8)}...` : task.wasteType}
+                      {task.wasteType}
                     </span>
                     {hoveredWasteType === task.wasteType && (
-                      <div className="absolute left-0 top-full mt-1 p-2 bg-gray-800 text-white text-xs rounded shadow-lg z-10">
+                      <div className="absolute left-0 top-full mt-2 p-3 bg-red-900/90 text-red-100 rounded z-10 border border-red-500">
                         {task.wasteType}
                       </div>
                     )}
                   </div>
-                  <div className="flex items-center">
-                    <Weight className="w-4 h-4 mr-2 text-gray-500" />
+                  <div className="flex items-center border border-red-500 p-3">
+                    <Weight className="w-5 h-5 mr-3" />
                     {task.amount}
                   </div>
-                  <div className="flex items-center">
-                    <Calendar className="w-4 h-4 mr-2 text-gray-500" />
+                  <div className="flex items-center border border-red-500 p-3">
+                    <Calendar className="w-5 h-5 mr-3" />
                     {task.date}
                   </div>
                 </div>
-                <div className="flex justify-end">
+
+                <div className="flex justify-end gap-4">
                   {task.status === 'pending' && (
-                    <Button onClick={() => handleStatusChange(task.id, 'in_progress')} variant="outline" size="sm">
-                      Start Collection
+                    <Button onClick={() => handleStatusChange(task.id, 'in_progress')} className="border-2 border-red-500 text-red-500 hover:bg-red-900/30 px-6" variant="outline">
+                      [INITIATE COLLECTION]
                     </Button>
                   )}
                   {task.status === 'in_progress' && task.collectorId === user?.id && (
-                    <Button onClick={() => setSelectedTask(task)} variant="outline" size="sm">
-                      Complete & Verify
+                    <Button onClick={() => setSelectedTask(task)} className="border-2 border-red-500 text-red-500 hover:bg-red-900/30 px-6" variant="outline">
+                      [VERIFY & COMPLETE]
                     </Button>
                   )}
                   {task.status === 'in_progress' && task.collectorId !== user?.id && (
-                    <span className="text-yellow-600 text-sm font-medium">In progress by another collector</span>
+                    <span className="text-red-600 font-mono border border-red-600 p-2">&lt;COLLECTION IN PROGRESS&gt;</span>
                   )}
                   {task.status === 'verified' && (
-                    <span className="text-green-600 text-sm font-medium">Reward Earned</span>
+                    <span className="text-red-600 font-mono border border-red-600 p-2">&lt;TASK COMPLETED&gt;</span>
                   )}
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-4 flex justify-center">
+          <div className="mt-8 flex justify-center items-center gap-6 font-mono">
             <Button
               onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="mr-2"
+              className="border-2 border-red-500 text-red-500 hover:bg-red-900/30 px-6"
             >
-              Previous
+              [&lt;&lt; PREV]
             </Button>
-            <span className="mx-2 self-center">
-              Page {currentPage} of {pageCount}
+            <span className="text-red-500 text-lg border-2 border-red-500 px-4 py-2">
+              PAGE {currentPage}/{pageCount}
             </span>
             <Button
               onClick={() => setCurrentPage(prev => Math.min(prev + 1, pageCount))}
               disabled={currentPage === pageCount}
-              className="ml-2"
+              className="border-2 border-red-500 text-red-500 hover:bg-red-900/30 px-6"
             >
-              Next
+              [NEXT &gt;&gt;]
             </Button>
           </div>
         </>
       )}
 
       {selectedTask && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <h3 className="text-xl font-semibold mb-4">Verify Collection</h3>
-            <p className="mb-4 text-sm text-gray-600">Upload a photo of the collected waste to verify and earn your reward.</p>
-            <div className="mb-4">
-              <label htmlFor="verification-image" className="block text-sm font-medium text-gray-700 mb-2">
-                Upload Image
+        <div className="fixed inset-0 bg-black/95 flex items-center justify-center p-8 z-50">
+          <div className="bg-black rounded p-8 w-full max-w-3xl border-2 border-red-500">
+            <h3 className="text-2xl font-bold mb-6 text-red-500 font-['Courier_New'] text-center">&lt;WASTE VERIFICATION PROTOCOL&gt;</h3>
+            
+            <div className="mb-6 border-2 border-red-500 p-6">
+              <label className="block text-red-500 font-mono mb-4 text-center">
+                [UPLOAD VERIFICATION IMAGE]
               </label>
-              <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                <div className="space-y-1 text-center">
-                  <Upload className="mx-auto h-12 w-12 text-gray-400" />
-                  <div className="flex text-sm text-gray-600">
-                    <label
-                      htmlFor="verification-image"
-                      className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500"
-                    >
-                      <span>Upload a file</span>
-                      <input id="verification-image" name="verification-image" type="file" className="sr-only" onChange={handleImageUpload} accept="image/*" />
-                    </label>
-                  </div>
-                  <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+              <div className="flex justify-center px-6 pt-5 pb-6 border-2 border-red-500 border-dashed">
+                <div className="text-center">
+                  <Upload className="mx-auto h-16 w-16 text-red-500 mb-4" />
+                  <label className="cursor-pointer bg-black text-red-500 hover:text-red-400 font-mono">
+                    [SELECT FILE]
+                    <input type="file" className="sr-only" onChange={handleImageUpload} accept="image/*" />
+                  </label>
+                  <p className="mt-2 text-sm text-red-400 font-mono">SUPPORTED: PNG, JPG, GIF (MAX 10MB)</p>
                 </div>
               </div>
             </div>
+
             {verificationImage && (
-              <Image src={verificationImage} alt="Verification" className="mb-4 rounded-md w-full" />
+              <div className="mb-6 border-2 border-red-500 p-2">
+                <Image src={verificationImage} alt="Verification" className="w-full" />
+              </div>
             )}
+
             <Button
               onClick={handleVerify}
-              className="w-full"
+              className="w-full bg-red-500 hover:bg-red-600 text-black font-mono text-lg py-4 mb-4"
               disabled={!verificationImage || verificationStatus === 'verifying'}
             >
               {verificationStatus === 'verifying' ? (
-                <>
-                  <Loader className="animate-spin -ml-1 mr-3 h-5 w-5" />
-                  Verifying...
-                </>
-              ) : 'Verify Collection'}
+                <div className="flex items-center justify-center">
+                  <Loader className="animate-spin h-6 w-6 mr-3" />
+                  VERIFYING...
+                </div>
+              ) : '[INITIATE VERIFICATION]'}
             </Button>
+
             {verificationStatus === 'success' && verificationResult && (
-              <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-md">
-                <p>Waste Type Match: {verificationResult.wasteTypeMatch ? 'Yes' : 'No'}</p>
-                <p>Quantity Match: {verificationResult.quantityMatch ? 'Yes' : 'No'}</p>
-                <p>Confidence: {(verificationResult.confidence * 100).toFixed(2)}%</p>
+              <div className="mb-4 p-6 bg-black border-2 border-red-500 font-mono">
+                <p className="mb-2">&gt; WASTE TYPE MATCH: {verificationResult.wasteTypeMatch ? 'CONFIRMED' : 'FAILED'}</p>
+                <p className="mb-2">&gt; QUANTITY MATCH: {verificationResult.quantityMatch ? 'CONFIRMED' : 'FAILED'}</p>
+                <p>&gt; CONFIDENCE LEVEL: {(verificationResult.confidence * 100).toFixed(2)}%</p>
               </div>
             )}
+
             {verificationStatus === 'failure' && (
-              <p className="mt-2 text-red-600 text-center text-sm">Verification failed. Please try again.</p>
+              <p className="text-red-500 text-center font-mono mb-4">&lt;VERIFICATION ERROR - RETRY REQUIRED&gt;</p>
             )}
-            <Button onClick={() => setSelectedTask(null)} variant="outline" className="w-full mt-2">
-              Close
+
+            <Button onClick={() => setSelectedTask(null)} className="w-full border-2 border-red-500 text-red-500 hover:bg-red-900/30 font-mono">
+              [TERMINATE VERIFICATION]
             </Button>
           </div>
         </div>
       )}
-
-      {/* Add a conditional render to show user info or login prompt */}
-      {/* {user ? (
-        <p className="text-sm text-gray-600 mb-4">Logged in as: {user.name}</p>
-      ) : (
-        <p className="text-sm text-red-600 mb-4">Please log in to collect waste and earn rewards.</p>
-      )} */}
     </div>
   )
 }
