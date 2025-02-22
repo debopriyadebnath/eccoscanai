@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { ArrowRight, Leaf, ImageIcon, Award } from "lucide-react"
 
 const LandingPage = () => {
@@ -30,10 +31,12 @@ const LandingPage = () => {
           <p className="text-xl text-gray-400 mb-8">
             Upload eco-friendly images, get AI analysis, and earn Web3 tokens!
           </p>
-          <button className="bg-green-500 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-green-600 transition duration-300 flex items-center mx-auto">
-            Get Started
+          <Link href='/dashboard'>
+          <button className="bg-yellow-900 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-green-600 transition duration-300 flex items-center mx-auto">
+            Get Started Now
             <ArrowRight className="ml-2 h-5 w-5" />
           </button>
+          </Link>
         </section>
 
         <section className="grid md:grid-cols-3 gap-8 mb-16">
