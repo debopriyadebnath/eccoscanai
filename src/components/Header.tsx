@@ -1,6 +1,3 @@
-
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // @ts-nocheck
 'use client'
 import { useState, useEffect } from "react"
@@ -19,10 +16,10 @@ import { Web3Auth } from "@web3auth/modal"
 import { CHAIN_NAMESPACES, IProvider, WEB3AUTH_NETWORK } from "@web3auth/base"
 import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
-import { createUser, getUnreadNotifications, markNotificationAsRead, getUserByEmail, getBalance } from "@/utils/db/actions"
+import { createUser, getUnreadNotifications, markNotificationAsRead, getUserByEmail, getUserBalance } from "@/utils/db/actions"
 
-const clientId = "WEB3_AUTH_CLIENT_ID";
- 
+const clientId = "BJKdDFkNtkWX87XqkuWrDu4rbkSvWyQZ5lswS0ucINxxcN0inRVW8zzKAywPPzgiOHP7_3PcfFwfpvcQvSdaLRs";
+
 const chainConfig = {
   chainNamespace: CHAIN_NAMESPACES.EIP155,
   chainId: "0xaa36a7",
@@ -40,7 +37,7 @@ const privateKeyProvider = new EthereumPrivateKeyProvider({
 
 const web3auth = new Web3Auth({
   clientId,
-  web3AuthNetwork: WEB3AUTH_NETWORK.TESTNET, 
+  web3AuthNetwork: WEB3AUTH_NETWORK.TESTNET, // Changed from SAPPHIRE_MAINNET to TESTNET
   privateKeyProvider,
 });
 
@@ -53,7 +50,7 @@ export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
   const [provider, setProvider] = useState<IProvider | null>(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [userInfo, setUserInfo] = useState<unknown>(null);
+  const [userInfo, setUserInfo] = useState<any>(null);
   const pathname = usePathname()
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const isMobile = useMediaQuery("(max-width: 768px)")
@@ -77,7 +74,7 @@ export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
               await createUser(user.email, user.name || 'Anonymous User');
             } catch (error) {
               console.error("Error creating user:", error);
-        
+              // Handle the error appropriately, maybe show a message to the user
             }
           }
         }
@@ -104,7 +101,7 @@ export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
 
     fetchNotifications();
 
-
+    // Set up periodic checking for new notifications
     const notificationInterval = setInterval(fetchNotifications, 30000); // Check every 30 seconds
 
     return () => clearInterval(notificationInterval);
