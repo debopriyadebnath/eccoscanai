@@ -30,6 +30,8 @@
     "react-dom": "^18",
     "react-hot-toast": "^2.5.2",
     "react-pro-sidebar": "^1.1.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7"
   },
@@ -37,6 +39,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/socket.io-client": "^1.4.36",
     "drizzle-kit": "^0.30.4",
     "eslint": "^8",
     "eslint-config-next": "14.2.13",
