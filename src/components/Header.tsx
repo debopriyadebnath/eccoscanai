@@ -22,7 +22,7 @@ import { useMediaQuery } from "@/hooks/useMediaQuery"
 import { createUser, getUnreadNotifications, markNotificationAsRead, getUserByEmail, getBalance } from "@/utils/db/actions"
 
 const clientId = "WEB3_AUTH_CLIENT_ID";
-
+ 
 const chainConfig = {
   chainNamespace: CHAIN_NAMESPACES.EIP155,
   chainId: "0xaa36a7",

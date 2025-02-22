@@ -1,6 +1,9 @@
 // components/ChannelList.tsx
 import Link from 'next/link';
-
+interface ChannelListProps {
+    channels: string[];
+    joinChannel: (channel: string) => void;
+  }
 const ChannelList = ({
   channels,
 }: {

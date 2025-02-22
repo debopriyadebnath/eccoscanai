@@ -9,6 +9,56 @@ import { Libraries } from '@react-google-maps/api';
 import { createUser, getUserByEmail, createReport, getRecentReports } from '@/utils/db/actions';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast'
+const [aiOutput, setAiOutput] = useState<{
+  wasteType: string;
+  amount: string;
+  confidence: number;
+} | null>(null);
+
+const [aiError, setAiError] = useState<string | null>(null);
+
+const processImageWithAI = async (imageFile: File) => {
+  try {
+    setVerificationStatus('verifying');
+    setAiError(null);
+
+    const genAI = new GoogleGenerativeAI(geminiApiKey!);
+    const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
+
+    // Convert the image file to base64
+    const imageData = await new Promise<string>((resolve) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result as string);
+      reader.readAsDataURL(imageFile);
+    });
+
+    const prompt = "Analyze this image and identify: 1) The type of waste shown 2) Approximate amount or quantity 3) Your confidence level in this assessment (as a percentage)";
+
+    const result = await model.generateContent([prompt, { inlineData: { data: imageData, mimeType: imageFile.type } }]);
+    const response = await result.response;
+    const text = response.text();
+
+    // Parse the AI response (you might need to adjust this based on actual response format)
+    const parsedResponse = {
+      wasteType: text.match(/type of waste: (.*?)(?:\n|$)/i)?.[1] || "Unknown",
+      amount: text.match(/amount: (.*?)(?:\n|$)/i)?.[1] || "Unknown",
+      confidence: parseInt(text.match(/confidence: (\d+)/i)?.[1] || "0"),
+    };
+
+    setAiOutput(parsedResponse);
+    setVerificationStatus('success');
+    setVerificationResult({
+      wasteType: parsedResponse.wasteType,
+      quantity: parsedResponse.amount,
+      confidence: parsedResponse.confidence
+    });
+
+  } catch (error) {
+    console.error('AI Processing Error:', error);
+    setVerificationStatus('failure');
+    setAiError(error instanceof Error ? error.message : 'Failed to process image');
+  }
+};
 
 const geminiApiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
@@ -394,4 +444,8 @@ export default function ReportPage() {
       </div>
     </div>
   )
+}
+
+function setVerificationStatus(arg0: string) {
+  throw new Error('Function not implemented.')
 }

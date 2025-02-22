@@ -14,7 +14,7 @@ export default function HomePage() {
   return (
     <div className="flex">
       <div className="w-1/4 bg-gray-100 p-4">
-        <ChannelList channels={channels} joinChannel={joinChannel} />
+        <ChannelList channels={channels} joinChannel ={joinChannel} />
       </div>
       <div className="w-3/4 bg-white p-4">
         {selectedChannel ? (
