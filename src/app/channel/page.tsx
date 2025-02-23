@@ -1,3 +1,11 @@
+
+import React from 'react'
+
+const page = () => {
+  return (
+    <div>
+      anirban
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -138,6 +146,10 @@ export default function HomePage() {
           </div>
         )}
       </div>
+
     </div>
-  );
+  )
 }
+
+export default page
+
