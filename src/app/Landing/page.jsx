@@ -56,7 +56,6 @@ const LandingPage = () => {
       <main className="container mx-auto px-4 py-12">
 
 
-      
 
        
       <footer className="border-t-2 border-green-500 text-green-400 py-8 mt-16">
