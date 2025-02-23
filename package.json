@@ -11,6 +11,7 @@
     "db:studio": "npx drizzle-kit studio"
   },
   "dependencies": {
+    "@aptos-labs/aptos-cli": "^1.0.2",
     "@google/generative-ai": "^0.22.0",
     "@neondatabase/serverless": "^0.10.4",
     "@radix-ui/react-dialog": "^1.1.6",
@@ -26,6 +27,8 @@
     "@web3auth/modal": "^8.12.6",
     "@web3auth/modal-react-hooks": "^9.6.0",
     "@web3auth/no-modal": "^9.6.0",
+    "apto": "^0.1.12",
+    "aptos": "^1.21.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.39.3",
