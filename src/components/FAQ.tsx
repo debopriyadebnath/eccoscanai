@@ -9,7 +9,7 @@ const FAQAccordion = () => {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center px-4 m-5 bg-gradient-to-br from-blue-50 to-green-50 min-h-screen">
       <div className="w-full lg:w-5/6 mx-auto">
         <div className="content">
           <div className="flex justify-center mb-5">

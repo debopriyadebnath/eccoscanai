@@ -31,11 +31,12 @@ const LandingPage = () => {
             <h1 className="text-6xl md:text-8xl font-bold text-center mb-8 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
               Welcome to EcoScan AI
             </h1>
-            <Link href="/dashboard">
+            <Link href='/dashboard'>
               <Button className="bg-yellow-400 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold shadow-lg hover:scale-105 transition-transform">
                 Get Started
               </Button>
             </Link>
+            
           </div>
         </div>
 
@@ -55,29 +56,7 @@ const LandingPage = () => {
       <main className="container mx-auto px-4 py-12">
 
 
-        <section className="border-2 border-green-500 p-8 mb-16 bg-white">
-          <h2 className="text-3xl font-bold text-green-500 mb-4 text-center ">=== How It Works ===</h2>
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <ol className="list-decimal list-inside space-y-4 text-green-400 ">
-                <li>&gt; Upload your eco-friendly images to our platform</li>
-                <li>&gt; Our AI analyzes the environmental impact of the content</li>
-                <li>&gt; Receive a detailed report on your contribution</li>
-                <li>&gt; Earn Web3 tokens based on the positive impact</li>
-                <li>&gt; Join our community of eco-warriors making a difference</li>
-              </ol>
-            </div>
-            <div className="relative h-64 md:h-full border-2 border-green-500">
-              <Image
-                src="/logoimg.png"
-                alt="EcoScan-AI Process"
-                fill
-                style={{ objectFit: "cover" }}
-                className=""
-              />
-            </div>
-          </div>
-        </section>
+      
 
        
       <footer className="border-t-2 border-green-500 text-green-400 py-8 mt-16">

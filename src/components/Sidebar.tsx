@@ -9,6 +9,7 @@ const sidebarItems = [
   { href: "/collect", icon: Trash, label: "Collect Waste" },
   { href: "/rewards", icon: Coins, label: "Rewards" },
   { href: "/leaderboard", icon: Medal, label: "Leaderboard" },
+  { href: "/channel", icon: Medal, label: "Check your Locality" },
 ]
 
 interface SidebarProps {

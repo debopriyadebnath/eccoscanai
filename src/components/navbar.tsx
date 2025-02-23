@@ -39,7 +39,7 @@ const Navbar = () => {
           <Link href="/how-it-works">
             <button className="text-black hover:text-green-600">How It Works</button>
           </Link>
-          <Link href="/contact">
+          <Link href="/dashboard">
             <button className="btn bg-green-600 text-white px-4 py-2 rounded-md hover:bg-red-500 transition">Join Us</button>
           </Link>
         </div>
