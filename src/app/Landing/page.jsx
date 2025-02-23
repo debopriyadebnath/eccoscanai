@@ -31,11 +31,12 @@ const LandingPage = () => {
             <h1 className="text-6xl md:text-8xl font-bold text-center mb-8 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
               Welcome to EcoScan AI
             </h1>
-            <Link href="/dashboard">
+            <Link href='/dashboard'>
               <Button className="bg-yellow-400 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold shadow-lg hover:scale-105 transition-transform">
                 Get Started
               </Button>
             </Link>
+            
           </div>
         </div>
 
@@ -55,7 +56,7 @@ const LandingPage = () => {
       <main className="container mx-auto px-4 py-12">
 
 
-       
+
        
       <footer className="border-t-2 border-green-500 text-green-400 py-8 mt-16">
         <div className="container mx-auto px-4 text-center font-['Courier_New']">
