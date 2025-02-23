@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 const ContactUs: React.FC = () => {
@@ -22,12 +23,12 @@ const ContactUs: React.FC = () => {
           </div>
           <div className="w-full lg:w-2/3">
             <div className="h-80">
-              <iframe
+              <Image
                 className="w-full h-full border-0"
-                frameBorder="0"
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6045.3003145248895!2d-73.9884657!3d40.7477229!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9ac1f1b85%3A0x7e33d1c0e7af3be4!2zMzUwIDV0aCBBdmUsIE5ldyBZb3JrLCBOWSAxMDExOCwg0KHQqNCQ!5e0!3m2!1sru!2sru!4v1689597362021!5m2!1sen!2sen"
-                allowFullScreen
-              ></iframe>
+               alt='IEM'
+               src={'/iem.png'}
+                fill
+              ></Image>
             </div>
           </div>
         </div>
