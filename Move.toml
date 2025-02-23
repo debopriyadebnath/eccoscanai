@@ -1,0 +1,15 @@
+[package]
+name = "contracts"
+version = "1.0.0"
+authors = []
+
+[addresses]
+WasteManagement = "b2424465a790fa37146fa255ffa15ea137a8777e66bc80f475af63c5a523a285"
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "mainnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]
