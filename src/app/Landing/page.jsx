@@ -17,15 +17,27 @@ const LandingPage = () => {
       <Navbar />
       {/* Video Section with text overlay */}
       <div className="relative overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          className="w-full object-cover"
-        >
-          <source src="/video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <div className="relative">
+          <video
+            autoPlay
+            loop
+            muted
+            className="w-full h-screen object-cover brightness-75"
+          >
+            <source src="/video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+            <h1 className="text-6xl md:text-8xl font-bold text-center mb-8 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+              Welcome to EcoScan AI
+            </h1>
+            <Link href="/dashboard">
+              <Button className="bg-yellow-400 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-semibold shadow-lg hover:scale-105 transition-transform">
+                Get Started
+              </Button>
+            </Link>
+          </div>
+        </div>
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/50"></div>
@@ -33,9 +45,9 @@ const LandingPage = () => {
        
       </div>
 
-      <EcoGallery />
+     
       <AppleCardsCarouselDemo />
-      <VelocityScroll className="bg-pink-400">EduScan AI</VelocityScroll>
+      <VelocityScroll className="bg-pink-400">EcoScan AI</VelocityScroll>
       <EcoScanMission/>
       <FAQAccordion/>
       <BuzzSection/>

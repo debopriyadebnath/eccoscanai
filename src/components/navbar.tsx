@@ -12,8 +12,8 @@ const Navbar = () => {
               <Image
                 src={'/logoimg.png'}
                 alt="EcoScan Logo"
-                width={50}
-                height={50}
+                width={60}
+                height={10}
                 className="rounded-full"
               />
             </button>
