@@ -9,6 +9,7 @@ import { VelocityScroll } from "@/components/magicui/scroll-based-velocity"
 import FAQAccordion from "@/components/FAQ"
 import EcoScanMission from "@/components/Desc"
 import ContactUs from "@/components/Contacts"
+import BuzzSection from "@/components/Devs"
 
 const LandingPage = () => {
   return (
@@ -37,6 +38,7 @@ const LandingPage = () => {
       <VelocityScroll className="bg-pink-400">EduScan AI</VelocityScroll>
       <EcoScanMission/>
       <FAQAccordion/>
+      <BuzzSection/>
       <ContactUs/>
       <main className="container mx-auto px-4 py-12">
 
