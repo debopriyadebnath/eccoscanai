@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
+import { AuroraText } from "./magicui/aurora-text";
 
 export function AppleCardsCarouselDemo() {
   const cards = data.map((card, index) => (
@@ -10,13 +11,15 @@ export function AppleCardsCarouselDemo() {
 
   return (
     <div className="w-full h-full py-20">
-      <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
-     Watch your Nature
-      </h2>
+      <AuroraText className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-black  font-sans">
+        Watch your Nature
+      </AuroraText>
       <Carousel items={cards} />
     </div>
   );
 }
+
+
 
 const DummyContent = () => {
   return (
@@ -50,9 +53,27 @@ const DummyContent = () => {
 const data = [
  
   {
-    category: "Productivity",
-    title: "Enhance your productivity.",
+    category: "Waste Management",
+    title: "Reduce, Reuse, Recycle: Your Path to Sustainability",
     src: "/butterfly.jpeg",
+    content: <DummyContent />,
+  },
+  {
+    category: "Waste Management", 
+    title: "Composting: Turn Waste into Black Gold",
+    src: "/leaves.jpeg",
+    content: <DummyContent />,
+  },
+  {
+    category: "Waste Management",
+    title: "Zero Waste Living: Small Steps, Big Impact",
+    src: "/mushroom.jpeg", 
+    content: <DummyContent />,
+  },
+  {
+    category: "Waste Management",
+    title: "Clean Earth, Better Future: Managing Our Waste",
+    src: "/trees.jpeg",
     content: <DummyContent />,
   },
   {

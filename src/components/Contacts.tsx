@@ -27,7 +27,8 @@ const ContactUs: React.FC = () => {
                 className="w-full h-full border-0"
                alt='IEM'
                src={'/iem.png'}
-                fill
+                width={300}
+                height={300}
               ></Image>
             </div>
           </div>
