@@ -1,5 +1,5 @@
 import React from 'react';
-import LatestUpdates from './LatestUpdates';
+import CardGrid from './LatestUpdatesData';
 
 const updates = [
   {
@@ -15,7 +15,7 @@ const updates = [
 const HomePage: React.FC = () => {
   return (
     <div>
-      <LatestUpdates updates={updates} />
+      <CardGrid  />
     </div>
   );
 };
