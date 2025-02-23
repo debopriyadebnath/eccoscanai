@@ -5,7 +5,13 @@ interface SocialLink {
   href: string;
   Icon: React.ElementType;
 }
-
+const socialLinks: SocialLink[] = [
+  { href: 'https://www.facebook.com/YourOfficialPage', Icon: FaFacebook },
+  { href: 'https://twitter.com/YourOfficialAccount', Icon: FaTwitter },
+  { href: 'https://www.instagram.com/YourOfficialProfile', Icon: FaInstagram },
+  { href: 'https://www.linkedin.com/in/YourOfficialProfile', Icon: FaLinkedin },
+  { href: 'https://www.twitch.tv/YourOfficialChannel', Icon: FaTwitch },
+];
 const socialLinks: SocialLink[] = [
   { href: 'https://mobiri.se/', Icon: FaFacebook },
   { href: 'https://mobiri.se/', Icon: FaTwitter },
