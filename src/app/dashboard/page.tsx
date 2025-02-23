@@ -7,6 +7,8 @@ import { Poppins } from 'next/font/google'
 import Link from 'next/link'
 
 import { getRecentReports, getAllRewards, getWasteCollectionTasks } from '@/utils/db/actions'
+import { MagicCard } from '@/components/magicui/magic-card'
+import { Meteors } from '@/components/magicui/meteors'
 const poppins = Poppins({ 
   weight: ['300', '400', '600'],
   subsets: ['latin'],
@@ -51,17 +53,17 @@ export default function Home() {
 
         const reportsSubmitted = reports.length;
         const tokensEarned = rewards.reduce((total, reward) => total + (reward.points || 0), 0);
-        const co2Offset = wasteCollected * 0.5;  // Assuming 0.5 kg CO2 offset per kg of waste
+        const co2Offset = wasteCollected * 0.5;  
 
         setImpactData({
-          wasteCollected: Math.round(wasteCollected * 10) / 10, // Round to 1 decimal place
+          wasteCollected: Math.round(wasteCollected * 10) / 10, 
           reportsSubmitted,
           tokensEarned,
-          co2Offset: Math.round(co2Offset * 10) / 10 // Round to 1 decimal place
+          co2Offset: Math.round(co2Offset * 10) / 10 
         });
       } catch (error) {
         console.error("Error fetching impact data:", error);
-        // Set default values in case of error
+       
         setImpactData({
           wasteCollected: 0,
           reportsSubmitted: 0,
@@ -78,64 +80,101 @@ export default function Home() {
     setLoggedIn(true);
   };
 
+
   return (
-    <div className={`container mx-auto px-4 py-16 ${poppins.className}`}>
+    <div className="container mx-auto px-6 py-12 bg-black min-h-screen">
+    <Meteors/>
+
       <section className="text-center mb-20">
-        <AnimatedGlobe />
-        <h1 className="text-6xl font-bold mb-6 text-gray-800 tracking-tight">
-          Zero-to-Hero <span className="text-green-600">Waste Management</span>
+        <h1 className="text-5xl font-bold mb-4 text-neutral-100">
+          EcoScan-AI
+          <span className="block text-2xl mt-2 font-medium text-neutral-100">
+            Waste Management Platform
+          </span>
         </h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
-          Join our community in making waste management more efficient and rewarding!
+        <p className="text-lg text-gray-100 max-w-2xl mx-auto leading-relaxed mb-8">
+          Join our innovative platform for{" "}
+          <span className="text-green-600 font-medium">efficient</span> and{" "}
+          <span className="text-blue-600 font-medium">sustainable</span> waste management.
         </p>
         {!loggedIn ? (
-          <Button onClick={login} className="bg-green-600 hover:bg-green-700 text-white text-lg py-6 px-10 rounded-full font-medium transition-all duration-300 ease-in-out transform hover:scale-105">
+          <Button
+            onClick={login}
+            className="bg-gradient-to-r from-green-600 to-blue-600 text-white px-8 py-3 rounded-md font-medium transition-all duration-300 hover:shadow-md hover:scale-105"
+          >
             Get Started
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         ) : (
           <Link href="/report">
-            <Button className="bg-green-600 hover:bg-green-700 text-white text-lg py-6 px-10 rounded-full font-medium transition-all duration-300 ease-in-out transform hover:scale-105">
+            <Button className="bg-gradient-to-r from-green-600 to-blue-600 text-white px-8 py-3 rounded-md font-medium transition-all duration-300 hover:shadow-md hover:scale-105">
               Report Waste
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>
         )}
       </section>
+  
       
-      <section className="grid md:grid-cols-3 gap-10 mb-20">
+      {/* Features Section */}
+      <section className="grid md:grid-cols-3 gap-8 mb-20">
         <FeatureCard
           icon={Leaf}
           title="Eco-Friendly"
           description="Contribute to a cleaner environment by reporting and collecting waste."
+          className="hover:shadow-lg transition-all duration-300"
         />
         <FeatureCard
           icon={Coins}
           title="Earn Rewards"
           description="Get tokens for your contributions to waste management efforts."
+          className="hover:shadow-lg transition-all duration-300"
         />
         <FeatureCard
           icon={Users}
           title="Community-Driven"
           description="Be part of a growing community committed to sustainable practices."
+          className="hover:shadow-lg transition-all duration-300"
         />
       </section>
-      
-      <section className="bg-white p-10 rounded-3xl shadow-lg mb-20">
-        <h2 className="text-4xl font-bold mb-12 text-center text-gray-800">Our Impact</h2>
-        <div className="grid md:grid-cols-4 gap-6">
-          <ImpactCard title="Waste Collected" value={`${impactData.wasteCollected} kg`} icon={Recycle} />
-          <ImpactCard title="Reports Submitted" value={impactData.reportsSubmitted.toString()} icon={MapPin} />
-          <ImpactCard title="Tokens Earned" value={impactData.tokensEarned.toString()} icon={Coins} />
-          <ImpactCard title="CO2 Offset" value={`${impactData.co2Offset} kg`} icon={Leaf} />
+  
+      {/* Impact Dashboard Section */}
+      <section className="mb-20">
+        <div className="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-2xl shadow-sm">
+          <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">
+            Impact Dashboard
+          </h2>
+          <div className="grid md:grid-cols-4 gap-6">
+            <ImpactCard
+              title="Waste Collected"
+              value={`${impactData.wasteCollected} kg`}
+              icon={Recycle}
+              className="hover:shadow-md transition-all duration-300"
+            />
+            <ImpactCard
+              title="Reports Submitted"
+              value={impactData.reportsSubmitted.toString()}
+              icon={MapPin}
+              className="hover:shadow-md transition-all duration-300"
+            />
+            <ImpactCard
+              title="Tokens Earned"
+              value={impactData.tokensEarned.toString()}
+              icon={Coins}
+              className="hover:shadow-md transition-all duration-300"
+              />
+            <ImpactCard
+              title="CO2 Offset"
+              value={`${impactData.co2Offset} kg`}
+              icon={Leaf}
+              className="hover:shadow-md transition-all duration-300"
+              />
+          </div>
         </div>
       </section>
-
-   
     </div>
-  )
+  );
 }
-
 function ImpactCard({ title, value, icon: Icon }: { title: string; value: string | number; icon: React.ElementType }) {
   const formattedValue = typeof value === 'number' ? value.toLocaleString('en-US', { maximumFractionDigits: 1 }) : value;
   
@@ -150,12 +189,12 @@ function ImpactCard({ title, value, icon: Icon }: { title: string; value: string
 
 function FeatureCard({ icon: Icon, title, description }: { icon: React.ElementType; title: string; description: string }) {
   return (
-    <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 ease-in-out flex flex-col items-center text-center">
+    <MagicCard className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 ease-in-out flex flex-col items-center text-center">
       <div className="bg-green-100 p-4 rounded-full mb-6">
-        <Icon className="h-8 w-8 text-green-600" />
+        <Icon className="h-8 w-8 text-red" />
       </div>
       <h3 className="text-xl font-semibold mb-4 text-gray-800">{title}</h3>
       <p className="text-gray-600 leading-relaxed">{description}</p>
-    </div>
+    </MagicCard>
   )
 }

@@ -1,4 +1,4 @@
-import BackgroundSection from "../components/BackgroundSection";
+import BackgroundSection from "./BackgroundSections";
 
 const HomePage = () => {
   return (
