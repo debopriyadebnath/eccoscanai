@@ -4,22 +4,22 @@ import Link from 'next/link';
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-transparent z-50">
+    <nav className="fixed top-0 bg-white shadow z-50 rounded-3xl w-[70%] left-1/2 transform -translate-x-1/2 px-5">
       <div className="container mx-auto flex justify-between items-center py-4">
         <div className="navbar-brand flex items-center">
           <Link href="/">
-            <a>
+            <button>
               <Image
-                src="https://r.mobirisesite.com/1229512/assets/images/photo-1539448295811-52fc1a563c68.jpeg"
+                src={'/logoimg.png'}
                 alt="EcoScan Logo"
                 width={50}
                 height={50}
                 className="rounded-full"
               />
-            </a>
+            </button>
           </Link>
           <Link href="/">
-            <a className="text-xl font-bold text-black ml-4">EcoScan</a>
+            <button className="text-xl font-bold text-black ml-4">EcoScan</button>
           </Link>
         </div>
         <button className="block lg:hidden">
@@ -31,16 +31,16 @@ const Navbar = () => {
         </button>
         <div className="hidden lg:flex space-x-8">
           <Link href="/home">
-            <a className="text-black hover:text-green-600">Home</a>
+            <button className="text-black hover:text-green-600">Home</button>
           </Link>
           <Link href="/features">
-            <a className="text-black hover:text-green-600">Features</a>
+            <button className="text-black hover:text-green-600">Features</button>
           </Link>
           <Link href="/how-it-works">
-            <a className="text-black hover:text-green-600">How It Works</a>
+            <button className="text-black hover:text-green-600">How It Works</button>
           </Link>
           <Link href="/contact">
-            <a className="btn bg-green-600 text-white px-4 py-2 rounded-md hover:bg-red-500 transition">Join Us</a>
+            <button className="btn bg-green-600 text-white px-4 py-2 rounded-md hover:bg-red-500 transition">Join Us</button>
           </Link>
         </div>
       </div>
